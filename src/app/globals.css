@@ -3,3 +3,9 @@
 @tailwind utilities;
 
 
+.roboto{
+    font-family: var(--font-roboto);
+}
+/* .bebas_neue{
+    font-family: var(--font-bebas_neue);
+} */

@@ -1,73 +1,34 @@
 // import Image from "next/image";
 "use client";
 
+import { bebas_neue } from "@/utils/fonts";
+import ThemeController from "@/components/themeController/themecontroller";
+import Layout from "@/components/layout/layout";
+
 export default function Home() {
 
-
   return (
-      <>
-              <button className="btn">Button</button>
-              <button className="btn btn-neutral">Neutral</button>
-      <button className="btn btn-primary">Primary</button>
-      <button className="btn btn-secondary">Secondary</button>
-      <button className="btn btn-accent">Accent</button>
-      <button className="btn btn-ghost">Ghost</button>
-      <button className="btn btn-link">Link</button>
-              <div className="dropdown mb-72">
-        <div tabIndex={0} role="button" className="btn m-1">
-          Theme
-          <svg
-            width="12px"
-            height="12px"
-            className="inline-block h-2 w-2 fill-current opacity-60"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 2048 2048">
-            <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-    </svg>
-  </div>
-  <ul tabIndex={0} className="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Default"
-        value="default" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Retro"
-        value="retro" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Cyberpunk"
-        value="cyberpunk" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Valentine"
-        value="valentine" />
-    </li>
-    <li>
-      <input
-        type="radio"
-        name="theme-dropdown"
-        className="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-        aria-label="Aqua"
-        value="aqua" />
-    </li>
-  </ul>
-</div>
-      </>
+    <>
+      
+     
+      <h2 className="roboto">this is roboto</h2>
+      <h2 className={`${bebas_neue}`}>this is normal</h2>
+      <h2 className="font-bebas_neue ">this is bebas nueu</h2>
+      <div  className="flex flex-col items-center justify-center min-h-screen">
+
+        <Layout>
+          <button className="btn">Button</button>
+          <button className="btn btn-neutral">Neutral</button>
+          <button className="btn btn-primary">Primary</button>
+          <button className="btn btn-secondary">Secondary</button>
+          <button className="btn btn-accent">Accent</button>
+          <button className="btn btn-ghost">Ghost</button>
+          <button className="btn btn-link">Link</button>
+        </Layout>
+        <ThemeController/>
+
+    </div>
+    </>
   );
 }
+
