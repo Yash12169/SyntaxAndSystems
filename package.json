@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@next/font": "^14.2.13",
+    "@studio-freight/react-lenis": "^0.0.47",
     "jotai": "^2.10.0",
+    "lenis": "^1.1.13",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18"
