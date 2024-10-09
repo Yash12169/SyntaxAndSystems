@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 export default function Cursor() {
     const [position,setPosition] = useState({x:0,y:0});
     const [visible,setVisible] = useState(true);
-
+    
     useEffect(()=>{
         const moveCursor =(e:MouseEvent)=>{
             setPosition({x:e.clientX,y:e.clientY});
@@ -13,7 +13,6 @@ export default function Cursor() {
             if(e.target instanceof HTMLElement){
                 if(e.target.tagName === 'BUTTON' || e.target.tagName === 'A'){
                     setVisible(false);
-
                 }
                 else{
                     setVisible(true);
@@ -39,7 +38,7 @@ export default function Cursor() {
     style={{
       left: `${position.x}px`,
       top: `${position.y}px`,
-      width: '40px',  // Custom cursor width
+      width: '40px',  
       height: '40px',
       zIndex: '200',
       transform: 'translate(-50%, -50%)',

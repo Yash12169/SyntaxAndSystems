@@ -27,7 +27,7 @@ export default function Footer() {
           />
           <div className="flex justify-end items-center border-t-[1px] border-b-[1px] border-r-[1px] bg-base-100 rounded-r-[15px] p-3 w-[10%] border-primary ">
             <button
-              className={` bg-primary text-primary-content p-3 rounded-[15px]`}
+              className={`btn hover:bg-primary bg-primary text-primary-content p-3 rounded-[15px]`}
             >
               Join Newsletter
             </button>
