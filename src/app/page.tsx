@@ -16,8 +16,8 @@ export default function Home() {
     <ReactLenis root>
       <Layout>
         <Cursor/>
+        <Navbar/>
         <Starter />
-        <ThemeController />
         <Article />
         <Footer />
         {/* <Navbar /> */}
