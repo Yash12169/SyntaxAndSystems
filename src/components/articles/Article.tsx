@@ -1,10 +1,13 @@
+"use client";
 import { inter } from "@/utils/fonts";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 interface article {
   id: number;
   title: string;
+  slug: string;
   pub_date: string;
   image: string;
   read_time: string;
@@ -16,6 +19,7 @@ const article_data: article[] = [
   {
     id: 0,
     title: "Best UI libraries and frameworks to speed up development",
+    slug: "uilibs",
     pub_date: "Jun 23, 2024",
     read_time: "2 min read",
     image: "/images/uilib.webp",
@@ -28,6 +32,7 @@ const article_data: article[] = [
     id: 1,
     title:
       "Animating the Web with GSAP: A Comprehensive Guide to the GreenSock Animation Platform",
+      slug:"gsapanimations",
     pub_date: "Jul 5, 2024",
     read_time: "2 min read",
     image: "/images/gsap.webp",
@@ -40,6 +45,7 @@ const article_data: article[] = [
     id: 2,
     title:
       "Why You Should Choose TypeScript Over JavaScript: A Developer’s Perspective",
+      slug:"tsvsjs",
     pub_date: "Jul 19, 2024",
     read_time: "2 min read",
     image: "/images/ts.jpeg",
@@ -50,6 +56,7 @@ const article_data: article[] = [
   },
   {
     id: 3,
+    slug: "nextjs",
     title: "Why Next.js Should Be Your Go-to JavaScript Framework",
     pub_date: "Aug 1, 2024",
     read_time: "2 min read",
@@ -62,6 +69,7 @@ const article_data: article[] = [
   {
     id: 4,
     title: "Why Tailwind CSS is Better Than Writing Regular CSS",
+    slug: "tailwindvsregularcss",
     pub_date: "Aug 26, 2024",
     read_time: "2 min read",
     image: "/images/tailwind.png",
@@ -74,6 +82,7 @@ const article_data: article[] = [
     id: 5,
     title:
       "State Management Made Simple: How to Master It Without Breaking a Sweat",
+      slug: "statemanagement",
     pub_date: "Sep 7, 2024",
     read_time: "2 min read",
     image: "/images/states.jpg",
@@ -85,6 +94,7 @@ const article_data: article[] = [
   {
     id: 6,
     title: "How to Build a Portfolio That Gets You Hired",
+    slug: "portfolio",
     pub_date: "Oct 2, 2024",
     read_time: "2 min read",
     image: "/images/portfolio.png",
@@ -102,7 +112,6 @@ export default function Article() {
   const startIndex = (page - 1) * pages;
   const endIndex = startIndex + pages;
   const currentArticles = article_data.slice(startIndex, endIndex);
-
   return (
     <div className="flex flex-col gap-[4rem]  pb-[3.5rem]">
       <div className=" pl-[23rem] ">
@@ -110,11 +119,9 @@ export default function Article() {
       </div>
       <div className=" flex flex-col items-center h-fit justify-start gap-[3rem] ">
         {currentArticles.map((article) => (
-          <div
-            key={article.id}
-            className="rounded-[20px] flex w-[60%]  justify-between  bg-primary cursor-pointer"
-          >
-            <div className="rounded-[20px] flex justify-between px-6 py-4 border-[2px] border-primary bg-base-100 translate-x-[-1%] translate-y-[-3.5%] hover:translate-x-[0%] transition duration-300 hover:translate-y-[0%] transition duration-300">
+            <Link href={`/${article.slug}`} key={article.id} className="rounded-[20px] flex w-[60%]  justify-between  bg-primary cursor-pointer">
+           
+            <div className="rounded-[20px] flex justify-between px-6 py-4 border-[2px] border-primary bg-base-100 translate-x-[-1%] translate-y-[-3.5%] hover:translate-x-[0%] transition duration-300 hover:translate-y-[0%]">
               <div className="flex flex-col  justify-between pt-6 pb-6 gap-3">
                 <div className="flex flex-col]">
                   <p
@@ -163,7 +170,8 @@ export default function Article() {
                 />
               </div>
             </div>
-          </div>
+          
+            </Link>
         ))}
       </div>
       <div className=" m-auto">

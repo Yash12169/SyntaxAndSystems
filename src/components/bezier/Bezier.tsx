@@ -18,7 +18,7 @@ export default function Bezier() {
     const width = window.innerWidth * 0.59;
     path.current.setAttributeNS(null, "d", `M0 250 Q${width * x} ${250 + progress}, ${width} 250`)
   }
-
+  
   const lerp = (x:number, y:number, a:number) => x * (1 - a) + y * a
 
   const manageMouseEnter = () => {

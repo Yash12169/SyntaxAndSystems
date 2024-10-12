@@ -88,6 +88,24 @@ const ThemeController = () => {
       accent: "#F43F5E",
       neutral: "#24292F",
     },
+    {
+      id: 9,
+      theme: 'corporate',
+      primary: '#4b6bfb',
+      secondary: '#7b92b2',
+      accent: '#67cba0',
+      neutral: '#181a2a',
+    },
+    {
+      id: 10,
+      theme: 'retro',
+      primary: '#ef9995',
+      secondary: '#a4cbb4',
+      accent: '#ebdc99',
+      neutral: '#7d7259',
+    },
+    
+
   ];
   
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -101,7 +119,7 @@ const ThemeController = () => {
     <div>
       {/* <div className="absolute w-screen h-screen z-[0] top-0 left-0 bg-orange-200" onClick={()=>setOpenTheme(false)}></div> */}
       <div style={{zIndex: 10}}
-        className="btn border-none flex hover:bg-white hover:bg-opacity-[0.1] justify-center items-center bg-transparent  w-fit  h-[70px] rounded-[15px]  cursor-pointer"
+        className="btn shadow-none border-none flex hover:bg-white hover:bg-opacity-[0.1] justify-center items-center bg-transparent  w-fit  h-[70px] rounded-[15px]  cursor-pointer"
         onClick={() => setOpenTheme(!openTheme)}
       >
         <svg
