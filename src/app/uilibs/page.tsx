@@ -1,11 +1,15 @@
+import Layout from "@/components/layout/layout";
 import Navbar from "@/components/Navbar/Navbar";
 import Starter from "@/components/starter/Starter";
+import { ReactLenis } from '@studio-freight/react-lenis'
 
-export default function page() {
+export default function Page() {
   return (
-    <div className="w-screen h-screen">
-       <Starter/>
+
+      <Layout>
         <Navbar/>
-    </div>
-  )
+        <Starter/>
+      </Layout>
+  
+  );
 }
