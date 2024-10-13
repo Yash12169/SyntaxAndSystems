@@ -1,12 +1,9 @@
 "use client";
 
-import { bebas_neue } from "@/utils/fonts";
-import ThemeController from "@/components/themeController/themecontroller";
 import Layout from "@/components/layout/layout";
 import Navbar from "@/components/Navbar/Navbar";
 import Starter from "@/components/starter/Starter";
 import Article from "@/components/articles/Article";
-import Bezier from "@/components/bezier/Bezier";
 import Footer from "@/components/footer/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis"; // Correct import
 import Cursor from "@/components/cursor/Cursor";
