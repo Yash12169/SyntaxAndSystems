@@ -4,19 +4,22 @@ import { useRef, useEffect } from 'react';
 
 export default function Bezier() {
 
-  const path = useRef(null);
-  let progress = 0;
+  const path = useRef<SVGPathElement>(null);
+  let progress:number = 0;
   let x = 0.5;
   let time = Math.PI / 2;
-  let reqId = null;
+  let reqId:number|null = null;
 
   useEffect(() => {
     setPath(progress);
-  }, [])
+  })
 
   const setPath = (progress:number) => {
     const width = window.innerWidth * 0.59;
-    path.current.setAttributeNS(null, "d", `M0 250 Q${width * x} ${250 + progress}, ${width} 250`)
+    const currentPath = path.current;
+    if(currentPath)
+    currentPath.setAttributeNS(null, "d", `M0 250 Q${width * x} ${250 + progress}, ${width} 250`)
+
   }
   
   const lerp = (x:number, y:number, a:number) => x * (1 - a) + y * a
@@ -28,9 +31,10 @@ export default function Bezier() {
     }
   }
 
-  const manageMouseMove = (e) => {
+  const manageMouseMove = (e:React.MouseEvent) => {
     const { movementY, clientX } = e;
-    const pathBound =  path.current.getBoundingClientRect();
+    const pathBound =  path.current?.getBoundingClientRect();
+    if(pathBound)
     x = (clientX - pathBound.left) / pathBound.width;
     progress+= movementY
     setPath(progress);

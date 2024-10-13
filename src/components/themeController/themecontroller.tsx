@@ -13,7 +13,7 @@ interface theme{
 }
 
 const ThemeController = () => {
-  const [theme, setTheme] = useAtom(themeAtom);
+  const [, setTheme] = useAtom(themeAtom);
   const [openTheme, setOpenTheme] = useState(false);
   const themes: theme[] = [
     {
@@ -107,17 +107,12 @@ const ThemeController = () => {
     
 
   ];
-  
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTheme(e.target.value);
-  };
   const handleThemeChange2 = (theme: string) => {
     setTheme(theme);
   };
 
   return (
     <div>
-      {/* <div className="absolute w-screen h-screen z-[0] top-0 left-0 bg-orange-200" onClick={()=>setOpenTheme(false)}></div> */}
       <div style={{zIndex: 10}}
         className="btn shadow-none border-none flex hover:bg-white hover:bg-opacity-[0.1] justify-center items-center bg-transparent  w-fit  h-[70px] rounded-[15px]  cursor-pointer"
         onClick={() => setOpenTheme(!openTheme)}

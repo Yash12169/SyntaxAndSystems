@@ -185,6 +185,7 @@ export default function Article() {
               aria-label={String(index + 1)}
               checked={page === index + 1}
               onClick={() => setPage(index + 1)}
+              defaultChecked
               
             />
           ))}
