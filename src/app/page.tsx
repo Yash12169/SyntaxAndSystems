@@ -7,7 +7,6 @@ import Article from "@/components/articles/Article";
 import Footer from "@/components/footer/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis"; // Correct import
 import Cursor from "@/components/cursor/Cursor";
-
 export default function Home() {
   return (
     <ReactLenis root>

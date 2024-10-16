@@ -1,4 +1,4 @@
-import { Roboto,Bebas_Neue, Chakra_Petch, Inter, Playfair_Display, Rum_Raisin } from 'next/font/google'
+import { Roboto,Bebas_Neue, Chakra_Petch, Inter, Playfair_Display, Rum_Raisin, Space_Grotesk } from 'next/font/google'
 const bebas_neue_init = Bebas_Neue({
     subsets: ['latin'],
     weight: ['400'],
@@ -29,6 +29,11 @@ const rum_raisin_init = Rum_Raisin({
   weight: ['400'],
   variable: '--font-rum_raisin',
 })
+const space_grotesk_init = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ["400","500","600","700"],
+  variable: '--font-space_grotesk',
+})
 
   
 export const roboto = roboto_init.className
@@ -37,3 +42,4 @@ export const chakra_petch = chakra_petch_init.className
 export const inter = inter_init.className
 export const playfair_display = playfair_display_init.className;
 export const rum_raisin = rum_raisin_init.className
+export const space_grotesk = space_grotesk_init.className

@@ -1,0 +1,98 @@
+.w17zbdjf {
+    position: relative;
+    display: block;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    border-radius: 1000px;
+    outline-offset: 2px;
+}
+
+.w17zbdjf:before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+}
+
+
+
+.w4ln40i {
+    position: relative;
+    display: inline-block;
+    transition: transform .3s cubic-bezier(.06,.63,.43,1), opacity .3s;
+}
+
+.s15za2df {
+    position: absolute;
+    width: 50%;
+    height: 45%;
+    top: 23%;
+    right: 30%;
+    border-radius: 50%;
+    overflow: hidden;
+    overflow: clip;
+    transform: scale(.85) rotate(-20deg);
+    transform-origin: center center;
+    transition: opacity .5s;
+    transition-delay: .4s;
+}
+
+html[data-color-mode=light] .s15za2df {
+    opacity: 0;
+    transition: opacity 0ms;
+    transition-delay: 0ms;
+}
+
+.s1qsi09f {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+     /* Replaced --search-shimmer-color */
+    opacity: 1; /* Replaced --search-shimmer-opacity */
+    /* animation: shimmer 1.5s infinite linear;  */
+    border-radius: 50%;
+    transform: rotate(-20deg);
+    transform: translateX(50%);
+}
+
+
+html[data-color-mode=light] .s1qsi09f {
+    background: #ffffff; /* Replaced --search-shimmer-color */
+    opacity: 1; /* Replaced --search-shimmer-opacity */
+}
+
+.slgln6u {
+    transform-origin: 45.83333333333333% 45.83333333333333%;
+}
+
+.sdzmpbj, .slgln6u {
+    stroke: currentColor;
+    display: block;
+    overflow: visible;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.shimmer-effect {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100px; /* Adjust as needed */
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 8px; /* Optional for rounded corners */
+}

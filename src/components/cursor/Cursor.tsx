@@ -34,7 +34,7 @@ export default function Cursor() {
   return (
     <div
     className={`fixed border-[3px] border-primary rounded-full pointer-events-none transition-transform duration-100 
-                ${visible ? 'opacity-100' : 'opacity-100'}`}
+                ${visible ? 'opacity-100' : 'opacity-100'} `}
     style={{
       left: `${position.x}px`,
       top: `${position.y}px`,
