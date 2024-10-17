@@ -1,6 +1,6 @@
 "use client";
 import styles from "./Navbar.module.css";
-import { chakra_petch, inter, space_grotesk } from "@/utils/fonts";
+import { space_grotesk } from "@/utils/fonts";
 import ThemeController from "../themeController/themecontroller";
 import "./Navbar.css";
 import { useEffect, useRef } from "react";

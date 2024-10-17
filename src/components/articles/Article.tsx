@@ -1,5 +1,5 @@
 "use client";
-import { inter, space_grotesk } from "@/utils/fonts";
+import { space_grotesk } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";

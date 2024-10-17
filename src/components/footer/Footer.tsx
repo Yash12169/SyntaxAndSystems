@@ -1,6 +1,6 @@
 "use client";
 
-import { inter, rum_raisin, space_grotesk } from "@/utils/fonts";
+import { rum_raisin, space_grotesk } from "@/utils/fonts";
 import { useState } from "react";
 import SpringModal from "../modals/Modals";
 
