@@ -5,7 +5,7 @@ import TinkersynthMachine from "../../../TinkerSynthMachine/components/TinkerSyn
 
 export default function Starter() {
   return (
-    <div className="flex flex-col gap-[2rem]">
+    <div className="flex flex-col gap-[2rem] pt-[7rem]" >
       <div className="flex justify-between pr-[26rem] pl-[23rem] leading-tight  items-center">
         <div>
           <div className={`text-[9rem] ${space_grotesk} font-bold`}>Blogs.</div>
