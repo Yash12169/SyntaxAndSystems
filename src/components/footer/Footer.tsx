@@ -62,14 +62,14 @@ export default function Footer() {
         <div className="flex justify-between">
           <div className="flex flex-col justify-between">
             <div>
-              <p className={`${inter} text-[1.5rem]`}>Syntax&Systems</p>
+              <p className={`${space_grotesk} text-[1.5rem]`}>Syntax & Systems</p>
             </div>
-            <div>
-              <p>@2024 Yash Jewalkar</p>
+            <div className={`${space_grotesk}`}>
+              <p>© 2024 Yash Jewalkar</p>
             </div>
           </div>
-          <div className="flex justify-between flex-col">
-            <div className="flex gap-3">
+          <div className="flex justify-between flex-col  ">
+            <div className="flex gap-3 justify-between">
               <a href="https://linkedin.com/in/yashjewalkar" target="_blank">
                 <svg
                   width="24"
@@ -186,7 +186,10 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
-           
+            <div className={`flex ${space_grotesk} underline text-[0.8rem] justify-between gap-[1rem]`}>
+              <div className="cursor-pointer">Terms of Use</div>
+              <div className="cursor-pointer">Privacy Policy</div>
+            </div>
           </div>
         </div>
       </div>

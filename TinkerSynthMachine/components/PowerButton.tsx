@@ -25,6 +25,7 @@ const LoadingPowerButton = ({ size = 30, isPressingBtn }: Props) => {
         borderRadius: '4px',
       }}
       data-is-pressing-btn={String(isPressingBtn)}
+     
     >
       <div
         style={{
@@ -32,15 +33,19 @@ const LoadingPowerButton = ({ size = 30, isPressingBtn }: Props) => {
           position: 'relative',
           outline: '1px solid hsl(0deg 0% 0% / 0.2)',
         }}
+         
       >
         <svg
+        
           width={size}
           height={size}
           viewBox="0 0 40 40"
           fill="none"
           style={{ display: 'block', overflow: 'visible', maxWidth: 'revert' }}
+          
         >
           <mask
+          
             id={`bob-${id}-circular-mask`}
             mask-type="alpha"
             maskUnits="userSpaceOnUse"
@@ -52,7 +57,7 @@ const LoadingPowerButton = ({ size = 30, isPressingBtn }: Props) => {
             <circle cx="20" cy="20" r="15" fill="#000000" />
           </mask>
 
-          <g>
+          <g >
             <circle cx="20" cy="20" r="20" fill="#2B2B2B" />
             <path
               d="M40 20C40 31.0457 31.0457 40 20 40C8.95431 40 0 31.0457 0 20C0 8.95431 8.95431 0 20 0C31.0457 0 40 8.95431 40 20ZM4.81942 20C4.81942 28.384 11.616 35.1806 20 35.1806C28.384 35.1806 35.1806 28.384 35.1806 20C35.1806 11.616 28.384 4.81942 20 4.81942C11.616 4.81942 4.81942 11.616 4.81942 20Z"
@@ -83,7 +88,7 @@ const LoadingPowerButton = ({ size = 30, isPressingBtn }: Props) => {
                   transform: isPressingBtn ? 'scale(0.95)' : 'none',
                 }}
               >
-                <circle cx="20" cy="20" r="15" fill={colors.primary} />
+                <circle cx="20" cy="20" r="15" fill={colors.primary}/>
                 <circle
                   cx="20"
                   cy="20"

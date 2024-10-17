@@ -59,7 +59,7 @@ export default function Navbar() {
   });
   return (
     <nav
-      className={`${styles.nav} shadow-md pb-[rem] pl-[21rem] pr-[21rem] mb-[5rem] pt-[rem] `}
+      className={`${styles.nav} shadow-md pb-[1rem] pl-[21rem] pr-[21rem] mb-[5rem] pt-[1rem]  `}
     >
       <div className=" flex items-center gap-[4rem] justify-between">
         <div className={`${space_grotesk} text-primary text-[1.8rem]  font-bold `}>
