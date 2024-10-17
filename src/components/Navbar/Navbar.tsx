@@ -59,21 +59,21 @@ export default function Navbar() {
   });
   return (
     <nav
-      className={`${styles.nav} shadow-md pb-[rem] pl-[23rem] pr-[23rem] mb-[5rem] pt-[rem] `}
+      className={`${styles.nav} shadow-md pb-[rem] pl-[21rem] pr-[21rem] mb-[5rem] pt-[rem] `}
     >
       <div className=" flex items-center gap-[4rem] justify-between">
-        <div className={`${space_grotesk} text-primary text-[2rem]  font-bold `}>
+        <div className={`${space_grotesk} text-primary text-[1.8rem]  font-bold `}>
           <h1>Syntax & Systems</h1>
         </div>
 
        <div className={`flex gap-[1.5rem] ${space_grotesk}`}>
-        <div className="text-[1.2rem]">
+        <div className="text-[1rem] font-semibold">
             <p>Topics</p>
         </div>
-        <div className="text-[1.2rem]">
+        <div className="text-[1rem] font-semibold">
             <p>About Me</p>
         </div>
-        <div className="text-[1.2rem]">
+        <div className="text-[1rem] font-semibold">
             <p>Categories</p>
         </div>
 

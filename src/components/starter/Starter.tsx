@@ -1,5 +1,4 @@
 "use client";
-
 import { inter, rum_raisin, space_grotesk } from "@/utils/fonts";
 import Bezier from "../bezier/Bezier";
 import TinkersynthMachine from "../../../TinkerSynthMachine/components/TinkerSynthMachine";

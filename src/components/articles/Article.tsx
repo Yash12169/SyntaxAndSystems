@@ -1,5 +1,5 @@
 "use client";
-import { inter } from "@/utils/fonts";
+import { inter, space_grotesk } from "@/utils/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -115,7 +115,7 @@ export default function Article() {
   return (
     <div className="flex flex-col gap-[4rem]  pb-[3.5rem]">
       <div className=" pl-[23rem] ">
-        <p className={`text-[3rem] ${inter} font-bold`}>My Recent Articles</p>
+        <p className={`text-[3rem] ${space_grotesk} font-bold`}>My Recent Articles</p>
       </div>
       <div className=" flex flex-col items-center h-fit justify-start gap-[3rem] ">
         {currentArticles.map((article) => (
@@ -125,12 +125,12 @@ export default function Article() {
               <div className="flex flex-col  justify-between pt-6 pb-6 gap-3">
                 <div className="flex flex-col]">
                   <p
-                    className={`font-bold ${inter} text-[2.2rem] leading-tight  w-[95%]`}
+                    className={`font-bold ${space_grotesk} text-[2.2rem] leading-tight  w-[95%]`}
                   >
                     {article.title}
                   </p>
                 </div>
-                <div className="flex w-fit gap-6 text-[0.95rem] font-semibold opacity-[0.6]">
+                <div className={`${space_grotesk} flex w-fit gap-6 text-[0.95rem] font-semibold opacity-[0.6]`}>
                   <div className="flex w-fit justify-center items-center">
                     <p>{article.pub_date}</p>
                   </div>
@@ -154,8 +154,8 @@ export default function Article() {
                   </div>
                 </div>
 
-                <div className={`${inter}  w-[90%]`}>
-                  <p className={`${inter} text-[1rem]`}>
+                <div className={`${space_grotesk}  w-[90%]`}>
+                  <p className={`${space_grotesk} text-[1rem]`}>
                     {article.description}
                   </p>
                 </div>

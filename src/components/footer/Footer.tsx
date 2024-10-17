@@ -1,6 +1,6 @@
 "use client";
 
-import { inter, rum_raisin } from "@/utils/fonts";
+import { inter, rum_raisin, space_grotesk } from "@/utils/fonts";
 import { useState } from "react";
 import SpringModal from "../modals/Modals";
 
@@ -12,12 +12,12 @@ export default function Footer() {
     <footer className="w-screen bg-base-300 rounded-t-[60px] pt-[8.75rem] pb-[6.25rem] flex flex-col gap-[5rem]">
       <div className="flex flex-col gap-10">
         <div className="   text-center">
-          <p className={`${inter}  text-[3.7rem] font-bold`}>
+          <p className={`${space_grotesk}  text-[3.7rem] font-bold`}>
             Be the <span className={`${rum_raisin} text-primary`}>first</span>{" "}
             to get <span className={`${rum_raisin} text-primary`}>access</span>
           </p>
           <div className="flex justify-center text-center ">
-            <p className={`w-[50%] text-[1.5rem]  opacity-[0.7] ${inter}`}>
+            <p className={`w-[50%] text-[1.5rem]  opacity-[0.7] ${space_grotesk}`}>
               Stay updated with the latest insights, tips, and exclusive
               content! Subscribe to get updates delivered straight to your
               inbox.
@@ -47,7 +47,7 @@ export default function Footer() {
                   setIsOpen(true);
                   setEmail("");
                 }}
-                className={`btn hover:bg-primary bg-primary text-primary-content p-3 rounded-[15px]`}
+                className={` btn hover:bg-primary bg-primary text-primary-content p-3 rounded-[15px]`}
               >
                 Join Newsletter
               </button>
