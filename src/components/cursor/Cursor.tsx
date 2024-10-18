@@ -40,7 +40,7 @@ export default function Cursor() {
       top: `${position.y}px`,
       width: '40px',  
       height: '40px',
-      zIndex: '200',
+      zIndex: '2000',
       transform: 'translate(-50%, -50%)',
     }}
   />
