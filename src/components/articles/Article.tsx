@@ -23,33 +23,36 @@ export default function Article() {
   const startIndex = (page - 1) * pages;
   const endIndex = startIndex + pages;
   const currentArticles = article_data.slice(startIndex, endIndex);
-  const arrowRef = useRef<SVGSVGElement[]>([]);
-  const articleRef = useRef<HTMLDivElement[]>([]);
-  const pointerOneRef = useRef<SVGPathElement[]>([]);
-  const pointerTwoRef = useRef<SVGPathElement[]>([]);
-  const pointerThreeRef = useRef<SVGPathElement[]>([]);
-  useEffect(() => {
-    currentArticles.forEach((_, index) => {
-      const arrow = arrowRef.current[index];
-      const article = articleRef.current[index];
-      const pointer1 = pointerOneRef.current[index];
-      const pointer2 = pointerTwoRef.current[index];
-      const pointer3 = pointerThreeRef.current[index];
 
-      if (arrow && article && pointer1 && pointer2 && pointer3) {
+  const arrowRef = useRef<{[key:number]: SVGSVGElement}>({});
+  const articleRef = useRef<{[key:number]: HTMLDivElement}>({});
+  const pointerOneRef = useRef<{[key:number]: SVGPathElement}>({});
+  const pointerTwoRef = useRef<{[key:number]: SVGPathElement}>({});
+  const pointerThreeRef = useRef<{[key:number]: SVGPathElement}>({});
+
+
+  useEffect(() => {
+    currentArticles.forEach((articles) => {
+      const arrow = arrowRef.current[articles.id];
+      const articleDiv = articleRef.current[articles.id];
+      const pointer1 = pointerOneRef.current[articles.id];
+      const pointer2 = pointerTwoRef.current[articles.id];
+      const pointer3 = pointerThreeRef.current[articles.id];
+
+      if (arrow && articleDiv && pointer1 && pointer2 && pointer3) {
         const spring = () => {
           const tl = gsap.timeline();
           tl.to(arrow, {
             duration: 0.2,
             width: 30,
-            repeat: 1,
-            yoyo: true,
+            // repeat: 1,
+            // yoyo: true,
             onStart: () => {
               arrow.classList.add("text-primary");
             },
-            onComplete: () => {
-              arrow.classList.remove("text-primary");
-            },
+            // onComplete: () => {
+            //   arrow.classList.remove("text-primary");
+            // },
           });
           tl.to(pointer1, {
             opacity: 1,
@@ -76,10 +79,21 @@ export default function Article() {
             duration: 0.1,
           });
         };
-        article.addEventListener("mouseenter", spring);
+        const springRev =()=>{
+          gsap.to(arrow,{
+            duration: 0.3,
+            width: 20,
+            onStart: ()=>{
+              arrow.classList.remove("text-primary")
+            }
+          })
+        }
+        articleDiv.addEventListener("mouseenter", spring);
+        articleDiv.addEventListener("mouseleave",springRev);
         return () => {
           gsap.killTweensOf([arrow, pointer1, pointer2, pointer3]);
-          article.removeEventListener("mouseenter", spring);
+          articleDiv.removeEventListener("mouseenter", spring);
+          articleDiv.removeEventListener("mouseleave",springRev)
         };
       }
     });
@@ -100,7 +114,11 @@ export default function Article() {
             className="rounded-[20px] flex w-[60%]  justify-between  bg-primary cursor-pointer"
           >
             <div
-              ref={articleRef.current[article.id]}
+              ref={(el)=>{
+                if(el){
+                  articleRef.current[article.id] = el;
+                }
+              }}
               className="rounded-[20px] flex justify-between px-6 py-4 border-[2px] border-primary bg-base-100 translate-x-[-1%] translate-y-[-3.5%] hover:translate-x-[0%] transition duration-300 hover:translate-y-[0%]"
             >
               <div className="flex flex-col  justify-between pt-6 pb-6 gap-3">
@@ -157,7 +175,9 @@ export default function Article() {
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       className="bnak8zc"
-                      ref={arrowRef}
+                      ref={(el)=>{
+                        if(el) arrowRef.current[article.id] = el
+                      }}
                     >
                       <line x1="5" y1="12" y2="12" x2="18"></line>
                       <polyline points="12 5 19 12 12 19"></polyline>
@@ -172,7 +192,9 @@ export default function Article() {
                       viewBox="0 0 24 24"
                     >
                       <path
-                        ref={pointerOneRef}
+                        ref={(el)=>{
+                          if(el) pointerOneRef.current[article.id] = el
+                        }}
                         className="opacity-0"
                         stroke="currentColor"
                         stroke-linecap="round"
@@ -181,7 +203,9 @@ export default function Article() {
                         d="m0 5 7 7-7 7"
                       />
                       <path
-                        ref={pointerTwoRef}
+                        ref={(el)=>{
+                          if(el) pointerTwoRef.current[article.id] = el
+                        }}
                         className="opacity-0"
                         stroke="currentColor"
                         stroke-linecap="round"
@@ -190,7 +214,9 @@ export default function Article() {
                         d="m10 5 7 7-7 7"
                       />
                       <path
-                        ref={pointerThreeRef}
+                         ref={(el)=>{
+                          if(el) pointerThreeRef.current[article.id] = el
+                        }}
                         className="opacity-0"
                         stroke="currentColor"
                         stroke-linecap="round"
