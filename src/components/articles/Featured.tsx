@@ -9,38 +9,41 @@ interface Topics {
 
 export default function Featured() {
   const sentenceRef = useRef<{ [id: number]: HTMLParagraphElement }>({});
-  // const arrowRef = useRef<{ [id: number]: SVGSVGElement }>({});
+  const arrowRef = useRef<{ [id: number]: SVGSVGElement }>({});
 
   useEffect(() => {
     topics.forEach((topics) => {
       const sentence = sentenceRef.current[topics.id];
-      const arrow = sentenceRef.current[topics.id];
+      const arrow = arrowRef.current[topics.id];
+      let animation: gsap.core.Animation | undefined;
       if (sentence && arrow) {
         const hoverAnim = () => {
-          gsap.to(sentence, {
-            duration: 0.5,
-            onStart: () => {
-              sentence.classList.add("text-primary");
-            },
+           gsap.to(arrow, {
+            duration: 0.3,
+            width: 65,
+            onStart:()=> {
+                arrow.classList.add("text-primary")
+            }
           });
-        //   gsap.to(arrow, {
-        //     duration: 0.5,
-        //     width: 30,
-        //   });
         };
         const removeHoverAnim = () => {
-          gsap.to(sentence, {
-            duration: 0.5,
-            onStart: () => {
-              sentence.classList.remove("text-primary");
-            },
-          });
-        };
+          gsap.to(arrow, {
+           duration: 0.3,
+           ease:"elastic.out(1.5,0.3)",
+           width: 50,
+           onStart: ()=>{
+            arrow.classList.remove("text-primary");
+           }
+         });
+       };
         sentence.addEventListener("mouseenter", hoverAnim);
-        sentence.addEventListener("mouseleave", removeHoverAnim);
+        sentence.addEventListener("mouseleave",removeHoverAnim)
         return () => {
+          if(animation){
+            animation.kill();
+          }
           sentence.removeEventListener("mouseenter", hoverAnim);
-          sentence.removeEventListener("mouseleave", removeHoverAnim);
+          sentence.removeEventListener("mouseleave",removeHoverAnim)
         };
       }
     });
@@ -56,16 +59,16 @@ export default function Featured() {
             className="flex justify-between w-[100%] relative"
             key={topic.id}
           >
-            <div>
+            <div className="w-[15%]">
               <svg
-                // ref={(element) => {
-                //   if (element) arrowRef.current[topic.id] = element;
-                // }}
+                ref={(element) => {
+                  if (element) arrowRef.current[topic.id] = element;
+                }}
                 aria-hidden="true"
                 viewBox="0 0 24 24"
                 fill="none"
                 className=""
-                width={"50px"}
+                width={"40px"}
                 height={"24px"}
               >
                 <path
@@ -77,14 +80,14 @@ export default function Featured() {
                 />
               </svg>
             </div>
-            <div className="w-[100%] relative">
+            <div className="w-[85%] relative hover:text-primary ">
               <p
                 ref={(el) => {
                   if (el) {
                     sentenceRef.current[topic.id] = el;
                   }
                 }}
-                className={`${space_grotesk} cursor-pointer   text-[1rem] font-semibold`}
+                className={`${space_grotesk} cursor-pointer text-[1rem] font-semibold`}
               >
                 {topic.name}
               </p>
