@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
+import Featured from "./Featured";
+import Sorting from "./Sorting";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger)
 interface article {
   id: number;
   title: string;
@@ -29,8 +33,32 @@ export default function Article() {
   const pointerOneRef = useRef<{[key:number]: SVGPathElement}>({});
   const pointerTwoRef = useRef<{[key:number]: SVGPathElement}>({});
   const pointerThreeRef = useRef<{[key:number]: SVGPathElement}>({});
+  const pinnedRef = useRef<HTMLDivElement>(null);
+  const pinnedParentRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const pinned = pinnedRef.current;
+    const pinnedParent = pinnedParentRef.current;
 
+    if (pinned && pinnedParent) {
+        ScrollTrigger.getAll().forEach((st)=>st.kill());
+        ScrollTrigger.refresh();
+        const pinnedAnim = ScrollTrigger.create({
+          trigger: pinned,
+          start: "top 100px",
+          markers:true,
+          pin:  true,
+          anticipatePin: 1,
+          pinSpacing: false,
+          end: ()=>`+=${pinnedParent.offsetHeight -pinned.offsetHeight}`
+
+        })
+      return () => {
+        pinnedAnim.kill();
+        window.scrollTo(0,0);
+      };
+    }
+  }, [page]);
   useEffect(() => {
     currentArticles.forEach((articles) => {
       const arrow = arrowRef.current[articles.id];
@@ -45,14 +73,9 @@ export default function Article() {
           tl.to(arrow, {
             duration: 0.2,
             width: 30,
-            // repeat: 1,
-            // yoyo: true,
             onStart: () => {
               arrow.classList.add("text-primary");
             },
-            // onComplete: () => {
-            //   arrow.classList.remove("text-primary");
-            // },
           });
           tl.to(pointer1, {
             opacity: 1,
@@ -100,18 +123,21 @@ export default function Article() {
   }, [currentArticles]);
 
   return (
-    <div className="flex flex-col gap-[4rem]  pb-[3.5rem]">
-      <div className=" pl-[23rem] ">
-        <p className={`text-[3rem] ${space_grotesk} font-bold`}>
+    <div className="flex flex-col gap-[4rem] mt-[10rem]  pb-[3.5rem]">
+      <div className=" pl-[rem] ">
+        <p className={`text-[3rem] ${space_grotesk} font-bold text-accent ml-[14rem]`}>
           My Recent Articles
         </p>
       </div>
-      <div className=" flex flex-col items-center h-fit justify-start gap-[3rem] ">
+
+
+      <div className=" flex  justify-center gap-[3rem] px-[2rem]" ref={pinnedParentRef}>
+        <div className=" flex flex-col h-fit justify-start gap-[3rem] w-[50%] ">
         {currentArticles.map((article) => (
           <Link
             href={`/${article.slug}`}
             key={article.id}
-            className="rounded-[20px] flex w-[60%]  justify-between  bg-primary cursor-pointer"
+            className="rounded-[20px] flex w-[100%]  justify-between  bg-primary cursor-pointer"
           >
             <div
               ref={(el)=>{
@@ -121,10 +147,10 @@ export default function Article() {
               }}
               className="rounded-[20px] flex justify-between px-6 py-4 border-[2px] border-primary bg-base-100 translate-x-[-1%] translate-y-[-3.5%] hover:translate-x-[0%] transition duration-300 hover:translate-y-[0%]"
             >
-              <div className="flex flex-col  justify-between pt-6 pb-6 gap-3">
+              <div className="flex flex-col  justify-between pt-6 pb-6 gap-3  w-[70%]">
                 <div className="flex flex-col]">
                   <p
-                    className={`font-bold ${space_grotesk} text-[2.2rem] leading-tight  w-[95%]`}
+                    className={`font-bold ${space_grotesk} text-[1.375rem] leading-tight  w-[95%]`}
                   >
                     {article.title}
                   </p>
@@ -228,7 +254,7 @@ export default function Article() {
                   </div>
                 </div>
               </div>
-              <div className=" width-[50%] relative flex justify-center items-center m-auto pt-5 pb-5  w-[70%] h-[80%]">
+              <div className="relative flex justify-center items-center m-auto pt-5 pb-5 w-[30%] h-[80%] ">
                 <Image
                   className="rounded-[15px]"
                   layout="fill"
@@ -240,7 +266,14 @@ export default function Article() {
             </div>
           </Link>
         ))}
+        </div>
+        <div className="flex flex-col w-[25%] h-fit" ref={pinnedRef}>
+          <Sorting/>
+          <Featured/>
+        </div>
       </div>
+
+
       <div className=" m-auto">
         <div className="join">
           {[...Array(numberOfPages)].map((_, index) => (
@@ -251,7 +284,9 @@ export default function Article() {
               name="options"
               aria-label={String(index + 1)}
               checked={page === index + 1}
-              onClick={() => setPage(index + 1)}
+              onClick={() => {
+                setPage(index + 1)
+              }}
               defaultChecked
             />
           ))}
@@ -270,7 +305,7 @@ const article_data: article[] = [
     image: "/images/uilib.webp",
     views: "1.2k",
     description:
-      "In today’s fast-paced world of web development, delivering intuitive, visually appealing, and responsive user interfaces (UI) is essential. However, building UIs from scratch can be time-consuming and requires careful attention to detail. To streamline this process ...",
+      "In today’s fast-paced world of web development, delivering intuitive, visually appealing, and responsive user interfaces (UI) is essential. However, building UIs ...",
     author: "Yash Jewalkar",
   },
   {
@@ -283,7 +318,7 @@ const article_data: article[] = [
     image: "/images/gsap.webp",
     views: "625",
     description:
-      "In the world of modern web development, animations play a critical role in enhancing user experience by making websites more interactive and engaging. Among the numerous animation libraries available, the GreenSock Animation Platform (GSAP) stands ... ",
+      "In the world of modern web development, animations play a critical role in enhancing user experience by making websites more interactive and engaging. Among the numerous  ... ",
     author: "Yash Jewalkar",
   },
   {
@@ -296,7 +331,7 @@ const article_data: article[] = [
     image: "/images/ts.jpeg",
     views: "349",
     description:
-      "JavaScript has been the cornerstone of web development for decades, powering everything from simple interactive elements to complex single-page applications (SPAs). However, as the complexity of web applications grows, so do the challenges in ...",
+      "JavaScript has been the cornerstone of web development for decades, powering everything from simple interactive elements to complex single-page applications (SPAs) ...",
     author: "Yash Jewalkar",
   },
   {
@@ -308,7 +343,7 @@ const article_data: article[] = [
     image: "/images/next.png",
     views: "233",
     description:
-      "In the ever-evolving world of web development, choosing the right framework can be a daunting task. There are several options out there, each with its unique advantages. Next.js, a React-based framework, has emerged as one of the most popular ...",
+      "In the ever-evolving world of web development, choosing the right framework can be a daunting task. There are several options out there, each with its unique advantages. Next.js ...",
     author: "Yash Jewalkar",
   },
   {
@@ -320,7 +355,7 @@ const article_data: article[] = [
     image: "/images/tailwind.png",
     views: "125",
     description:
-      "When building modern web applications, developers often face the challenge of writing clean, scalable, and maintainable styles. While traditional CSS provides the foundation for styling web elements, it can become cumbersome and difficult to ...",
+      "When building modern web applications, developers often face the challenge of writing clean, scalable, and maintainable styles. While traditional CSS provides the  ...",
     author: "Yash Jewalkar",
   },
   {
@@ -333,7 +368,7 @@ const article_data: article[] = [
     image: "/images/states.jpg",
     views: "97",
     description:
-      "In the rapidly evolving world of web development, handling state effectively is a crucial aspect of building scalable and responsive applications. As developers build increasingly complex applications, the need to manage and synchronize state ...",
+      "In the rapidly evolving world of web development, handling state effectively is a crucial aspect of building scalable and responsive applications. As developers  ...",
     author: "Yash Jewalkar",
   },
   {
@@ -345,7 +380,7 @@ const article_data: article[] = [
     image: "/images/portfolio.png",
     views: "59",
     description:
-      "In today’s competitive job market, having a standout portfolio is crucial for developers seeking to showcase their skills and attract potential employers. A well-crafted portfolio not only demonstrates your technical expertise but also ...",
+      "In today’s competitive job market, having a standout portfolio is crucial for developers seeking to showcase their skills and attract potential employers ...",
     author: "Yash Jewalkar",
   },
 ];
