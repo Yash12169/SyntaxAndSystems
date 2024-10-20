@@ -9,7 +9,7 @@ interface Topics {
 
 export default function Featured() {
   const sentenceRef = useRef<{ [id: number]: HTMLParagraphElement }>({});
-  const arrowRef = useRef<{ [id: number]: SVGSVGElement }>({});
+  // const arrowRef = useRef<{ [id: number]: SVGSVGElement }>({});
 
   useEffect(() => {
     topics.forEach((topics) => {
