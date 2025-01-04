@@ -46,7 +46,6 @@ export default function Article() {
         const pinnedAnim = ScrollTrigger.create({
           trigger: pinned,
           start: "top 100px",
-          markers:true,
           pin:  true,
           anticipatePin: 1,
           pinSpacing: false,
@@ -123,7 +122,7 @@ export default function Article() {
   }, [currentArticles]);
 
   return (
-    <div className="flex flex-col gap-[4rem] mt-[10rem]  pb-[3.5rem]">
+    <div className="flex flex-col gap-[4rem] pt-[2.5rem]  pb-[3.5rem]">
       <div className=" pl-[rem] ">
         <p className={`text-[3rem] ${space_grotesk} font-bold text-accent ml-[14rem]`}>
           My Recent Articles

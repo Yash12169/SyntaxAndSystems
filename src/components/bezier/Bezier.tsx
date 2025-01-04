@@ -15,7 +15,7 @@ export default function Bezier() {
   })
 
   const setPath = (progress:number) => {
-    const width = window.innerWidth * 0.59;
+    const width = window.innerWidth * 0.75;
     const currentPath = path.current;
     if(currentPath)
     currentPath.setAttributeNS(null, "d", `M0 250 Q${width * x} ${250 + progress}, ${width} 250`)
