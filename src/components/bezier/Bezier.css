@@ -6,8 +6,8 @@
   justify-content: center;
   background-color: transparent;
   color: black;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  margin-left: -6rem;
+  margin-right: rem;
 }
 
 .body-bez{
@@ -30,7 +30,7 @@
 .line-bez{
   height: 2px;
   margin-bottom: 20px;
-  width: 70%;
+  width: 75%;
   position: relative;
 }
 
